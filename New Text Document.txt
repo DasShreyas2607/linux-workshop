@@ -1,0 +1,124 @@
+7.09
+1. Q_WVANE_GAIN=0 (close the function of active welcome, because the performance of the vector model is good, this auxiliary is not needed)
+2. Q_TILT_FIX_ANGLE =0 Aileron and tilt servo mixing control 0~15
+
+
+ARHS-arientation flight control installation attitude
+Using and Closing the BRD-SAFYTYENABLE Safety Release Switch
+ALT_HOLD_RTL The default return altitude is 100 meters
+
+
+
+
+
+5.19 Update Miscellaneous
+1. ALT_HOLD_RTL =6000 The return altitude is 60 meters
+2. Reduce the cruising speed to 13m/s and reduce the runaway return speed.
+
+
+
+
+
+5.10.1 Flight switching optimization
+
+1. Change Q-STABILIZE to QLOITER
+2. Decreased the time for the continuous control of the fixed wing to change from 5 seconds to 3 seconds
+Q_TRANSITION_MS =3000
+3. Increase the deceleration rate. Deceleration rate, the glide distance from fixed-wing to multi-axis (the smaller the value, the longer the glide
+Q_TRANS_DECEL=4
+4. Increase the tilting speed from 45 to 120
+Q_TILT_RATE_UP =120 (45=1 second tilt 45 degrees)
+5. In the vertical mode, the maximum movements of the elevator and aileron have not been changed.
+6. Repair and optimize the tilting servo angle. T01-Y3 The vertical servo needs to be pulled forward.
+7. Reduce the maximum angle of the tilt steering gear to solve the problem of cutting the wings
+Q_TILT_YAW_ANGLE =15
+8.	
+
+
+
+
+5.9.1 Flight mode optimization
+Updates are as follows:
+1. Decrease the forward tilt angle of the servo when switching the fixed wing from 60° to 80°.
+Q_TILT_MAX=80 Tilt to this angle and wait for the airspeed to reach
+2. When the fixed wing approaches the home 60 meters, it will automatically convert to multi-axis
+RTL_RADIUS=60
+3. Increase from 30 to 45, increase the speed of vertical conversion fixed wing
+Q_TILT_RATE_DN=45 The speed of tilting down (15=15 degrees in 1 second)
+4. Q_TRANS_DECEL=2.5 Deceleration rate, the glide distance from fixed wing to multi-axis (the smaller the value, the longer the glide)
+5. AHRS_ORIENTATION =0 flight controller installation direction
+6. Increase the maximum angle of the aileron axis from 60 to 70°
+LIM_ROLL_CD=70 The maximum deflection angle of the ailerons in the stabilization mode
+
+
+
+
+5.8.3 Fixed wing optimization
+Updates are as follows:
+7. Decrease the forward tilt angle of the servo when switching the fixed wing from 50° to 60°.
+Q_TILT_MAX=60 Tilt to this angle and wait for the airspeed to reach
+8. When the fixed wing is close to home 50 meters, it will automatically convert to multi-axis
+RTL_RADIUS=50
+9. The speed of multi-axis vertical descent can also be slower.
+Q_LAND_SPEED=50 The second stage falling speed, 60=60 cm per second)
+10. From 15 to 30, increase the speed of the vertical conversion fixed wing
+Q_TILT_RATE_DN=30 The speed of tilting down (15=15 degrees in 1 second)
+11. The OSD speed unit is changed to KM. Simplified OSD.
+
+
+5.8 Optimized version of fixed wing mode
+Updates are as follows:
+12. Increase the maximum angle of the aileron axis
+LIM_ROLL_CD=70 The maximum deflection angle of the ailerons in the stabilization mode
+13. Increase the forward tilt angle of the steering gear when switching the fixed wing from 50° to 60°.
+Q_TILT_MAX=60 Tilt to this angle and wait for the airspeed to reach
+14. The multi-axis descending speed is increased (when it goes down diagonally, not vertically), because there is a speed and the wings are not easy to flip over, we adjust it faster to save time.
+Q_WP_SPEED_DN=250
+15. When the fixed wing is close to home 60 meters, it will automatically convert to multi-axis
+RTL_RADIUS=60
+16. The speed of multi-axis vertical descent can also be faster.
+Q_LAND_SPEED=60 The second stage falling speed, 60=60 cm per second)
+
+
+
+
+5.7 Enhanced Maneuverability in Fixed Wing Mode
+Updates are as follows:
+17. Increase the maximum angle of the aileron axis (45~65)
+LIM_ROLL_CD=60 The maximum deflection angle of the ailerons in the stabilized mode, be careful of stalling.
+18. Increase the maximum angle of the lift axis
+LIM_PITCH_MAX=3500 Elevation angle 35° in auto stabilization mode
+LIM_PITCH_MIN=-3000 Pitch angle 35° in auto stabilization mode
+19.
+20. Increase the forward tilt angle of the steering gear when switching the fixed wing from 40° to 50°.
+Q_TILT_MAX=50 (tilt to this angle and wait for the airspeed to reach, 70=70 degrees)
+
+21. Increase the multi-axis sailing speed, the default is only 5 meters per second (too slow), so we double the speed, so that when switching back to multi-axis, the speed will not be too fast and need to be braked (the altitude will change greatly), and also save time.
+Q_WP_SPEED=800 (1000 cm = 10 meters per second, 1500 is still acceptable)
+22. The speed of multi-axis descent is increased (when it goes down diagonally, not vertically), because there is a speed and the wings are not easy to turn over, we adjust it faster to save time.
+Q_WP_SPEED_DN=200
+23. When the fixed wing approaches the home 30 meters, it starts to automatically convert to multi-axis
+RTL_RADIUS=30
+24. The speed of multi-axis vertical descent can also be faster.
+Q_LAND_SPEED=50
+25. Q_LAND_FINAL_ALT=3 The height of the second stage landing is less than 3 meters
+26. ALT_HOLD_RTL=8000 (fixed wing self-return height, 7000=7000 cm, is 70 meters, if -1 is the original height)
+Q_RTL_ALT=30 (the altitude of the multi-axis return home, from this altitude it starts to descend)
+
+
+
+5.7 Lock tail enhanced version
+Updates are as follows:
+1. Increase the tilting servo angle from 10° to 20°.
+2. Increase heading gain, P : 0.55 ; I : 0.055 ; D : 0.05
+
+After the update, a small amount of improvements were made to the problem that the course could not be locked in strong outdoor winds. However, the tail locking effect is tight enough, the dynamic response is slow, and the locking rate is low. No suitable improvement method has been found yet.
+
+SERVO1 right motor
+SERVO2 left motor
+SERVO3 tail motor
+SERVO4 lift
+SERVO5 Left-tilt steering gear
+SERVO6 Right tilt steering gear
+SERVO7 BEC Power Supply/Aileron
+SERVO8 Aileron
